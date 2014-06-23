@@ -8,12 +8,12 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "You successfully created a new user!"
     else
-      flash[:fail] = "New user was note created"
-      render :new
+      flash.now[:fail] = "New user was not created"
+      render 'new'
     end
   end
 
-  def end
+  def show
   end
 
   private
