@@ -1,0 +1,89 @@
+RDBMS - Relational Database Management System
+
+  -Databases exist to persist data
+  -All data has relationships
+
+  Database Structure
+  ------------------
+
+  -Tables (Many tables)
+
+      -Columns: Cloumn Names
+      -Rows: stores data
+
+  Querying
+  --------
+  SQL - Structured Query Laguage
+
+  Sequel Pro (Mysql only)
+
+  Primary Key:
+  - Unique identifier for each row in a tbale
+  - Usually this is auto-incremeneted by the database system
+
+  Foreign Key:
+  - Relates one table to the Primary Key on another table
+  - Must have the other tables  name _id to relate back to its singular relationship (belongs to)
+
+  Basic Commands:
+  - SELECT * FROM <table name> WHERE <column name>
+  - SELECT * FROM <tabel name> ORDER BY (DESC or <column name>) LIMIT <number of rows>
+  - SELECT * FROM <tabel name> INNER JOIN artiists b on a.artist_id = b.id LIMIT 5;
+
+
+ Active Record
+ -------------
+  The module that communicates between the database and the model
+
+  Basic Commands:
+  - Model.where("id = ?", '1') You can use names and such as well. Sanitizes from user
+  - Model.order("name DESC").where(created_at > <time>)
+
+  Where vs find vs find_by:
+  - Where returns an "array" (not actually an array but behaves like one) whereas find returns an object based on id and fin_by reuturns an object based on specified argument
+
+  Scopes
+  ------
+  Used to specify commonly used queries so that you dont have to re-write them every time
+
+  Syntax:
+
+  <% scope :scope_name, -> { block with code } %>
+  ex:
+  <% scope :most_recent_five, -> { order(created_at: :desc) } %>
+  Scoping and passing argument:
+    Note: Scopes are essentially class methods
+
+  <% scope :created_before, -> (time) { where ("created_at < ?", 'time') }
+                      ORDER
+     def self.created_before(time)
+      where("created_at < ?", 'time')
+    end
+    %>
+
+  Associations
+  ------------
+  A connection between two active record models. Ther ,ake common operations simpler and easier.
+
+  Product --------> has_many Reviews
+
+    - blongs_to
+    - has_one
+    - has_many
+    - has_many :through
+    - has_and_belongs_to_many
+
+    Foreign key is id column that points to another table. "Foreign to that table..." Found on the "many" side of the relationship.
+
+    has_many :through vs has_and_belongs_to_many
+
+    Has many through; The "through" part is actually a "thing" or an object
+    habtm; The table in the middle isnt an actual "thing" but rather just a relationship between the two objects.
+
+
+
+
+
+
+
+
