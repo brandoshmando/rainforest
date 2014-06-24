@@ -21,6 +21,29 @@
     <p><%= review.user.email %></p>
     <hr>
   <% end %>
+
+  <%= form_for [@product, @review] do |f| %>
+  <% if @review.errors.any? %>
+    <div class="error_explanatoin">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved!</h2>
+      <div class="error_messages">
+        <ul>
+          <% @reviews.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <%= f.label :title %>
+      <%= f.text_field :title, placeholder: "Title" %>
+    </div>
+
+    <div>
+      <%= f.label :comment %>
+      <%= f.text_area :comment, placeholder: "Type your comment here..." %>
+    </div>
+  <% end %>
 <% else %>
   <p>Please  <%= link_to "Sign in", new_session_path %> or <%= link_to "Sign up", new_user_path %> to see these reviews!</p>
 <% end %>
