@@ -11,5 +11,18 @@
   <%= @product.price_in_cents %>
 </p>
 <hr>
+<h2>Reviews for <%= @product.name %></h2>
+<hr>
+<% if current_user %>
 
-<h2>Reviews will go down here!</h2>
+  <% @product.reviews.each do |review| %>
+    <h3><%= link_to "#{review.title}", review_path(review) %></h3>
+    <p><%= review.comment %></p>
+    <p><%= review.user.email %></p>
+    <hr>
+  <% end %>
+<% else %>
+  <p>Please  <%= link_to "Sign in", new_session_path %> or <%= link_to "Sign up", new_user_path %> to see these reviews!</p>
+<% end %>
+
+
