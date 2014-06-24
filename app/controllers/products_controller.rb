@@ -14,9 +14,10 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to product_path(@product)
+      redirect_to product_path(@product) :notice => "Product Created!"
     else
       render :new
+      flash.now[:alert] = "Product was not created for the following reasons"
     end
   end
 
