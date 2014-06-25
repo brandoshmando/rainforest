@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-  before_action :ensure_logged_in, only: [:show]
+  before_action :ensure_logged_in, only: [:edit, :destroy]
+
+  def index
+    @users = User.all
+  end
+
   def new
     @user = User.new
   end
@@ -16,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   private
