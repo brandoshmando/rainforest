@@ -9,7 +9,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     if current_user
-      @reviews = @product.reviews.build
+      @reviews = @product.reviews
+      @review = Review.new
     end
   end
 
@@ -50,7 +51,6 @@ class ProductsController < ApplicationController
   end
 
 private
-
   def product_params
     params.require(:product).permit(:name, :description, :price_in_cents)
   end
