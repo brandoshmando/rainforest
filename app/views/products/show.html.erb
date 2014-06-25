@@ -4,7 +4,6 @@
 <% else %>
   <p><%= link_to "//Home", root_path %>
 <% end %>
-
 <hr>
 <p><strong>Description:</strong></p>
 <p>
@@ -18,31 +17,7 @@
 <h2>Reviews for <%= @product.name %></h2>
 <hr>
 <% if current_user %>
-  <%= form_for [@product, @review] do |f| %>
-    <% if @review.errors.any? %>
-      <div class="error_explanatoin">
-        <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved!</h2>
-        <div class="error_messages">
-          <ul>
-            <% @reviews.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    <% end %>
-
-    <div>
-      <%= f.label :title %>
-      <%= f.text_field :title, placeholder: "Title" %>
-    </div>
-
-    <div>
-      <%= f.label :comment %>
-      <%= f.text_area :comment, placeholder: "Type your comment here..." %>
-    </div>
-
-  <% end %>
+ <%= render 'comment_form.html.erb' %>
   <% if @reviews.empty? %>
     <p><i>There are currently no reviews for this product</i></p>
   <% else %>
