@@ -1,4 +1,8 @@
 <h1>Edit <%= @product.name %></h1>
-<p><%= link_to "//Home", root_path %> | <%= link_to "//View", @product %> | <%= link_to "//Delete", product_path, method: :delete %>
+<% if current_user && @product.user_id == current_user.id %>
+  <p><%= link_to "//Home", root_path %> | <%= link_to "//View", @product %> | <%= link_to "//Delete", product_path, method: :delete %></p>
+<% else %>
+  <p><%= link_to "//Home", root_path %> | <%= link_to "//View", @product %> </p>
 <hr>
+
 <%= render 'form.html.erb' %>
