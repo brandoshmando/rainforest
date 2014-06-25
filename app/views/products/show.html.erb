@@ -1,7 +1,11 @@
 <h1><%= @product.name %></h1>
-<p><%= link_to "//Home", root_path %> | <%= link_to "//Edit", edit_product_path %></p>
-<hr>
+<% if current_user && @product.user_id == current_user.id %>
+  <p><%= link_to "//Home", root_path %> | <%= link_to "//Edit", edit_product_path %></p>
+<% else %>
+  <p><%= link_to "//Home", root_path %>
+<% end %>
 
+<hr>
 <p><strong>Description:</strong></p>
 <p>
   <%= @product.description %>
