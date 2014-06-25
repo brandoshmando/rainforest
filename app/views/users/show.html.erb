@@ -1,1 +1,28 @@
-<h1>User show page...</h1>
+<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+<%= image_tag avatar_url(@user) %>
+<hr>
+<h2><%= @user.first_name%>'s Reviews</h2>
+<% if @user.reviews.empty? %>
+  <p>This user has not reviewed any products yet...</p>
+  <hr>
+<% else %>
+  <% user.reviews.each do |review| %>
+    <h3><%= review.title %></h3>
+    <p><strong>Review:</strong><%= review.comment %></p>
+    <p><%= link to "#{review.created_at}", product_review_path %></p>
+  <hr>
+  <% end %>
+<% end %>
+
+<h2><%= @user.first_name%>'s Products</h2>
+<% if @user.products.empty? %>
+  <p>This user has not created any products yet...</p>
+  <hr>
+<% else %>
+  <% user.products.each do |product| %>
+    <h3><%= product.title %></h3>
+    <p><strong>Review:</strong><%= product.comment %></p>
+    <p><%= link to "#{product.created_at}", product_review_path %></p>
+  <hr>
+  <% end %>
+<% end %>
