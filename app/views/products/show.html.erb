@@ -14,17 +14,6 @@
 <h2>Reviews for <%= @product.name %></h2>
 <hr>
 <% if current_user %>
-  <% if @reviews.empty? %>
-    <p><i>There are currently no reviews for this product</i></p>
-  <% else %>
-    <% @product.reviews.each do |review| %>
-      <h3><%= link_to "#{review.title}", product_review_path(review) %></h3>
-      <p><%= review.comment %></p>
-      <p><%= review.user.email %></p>
-      <hr>
-    <% end %>
-  <% end %>
-
   <%= form_for [@product, @review] do |f| %>
     <% if @review.errors.any? %>
       <div class="error_explanatoin">
@@ -37,15 +26,27 @@
           </ul>
         </div>
       </div>
-      <div>
-        <%= f.label :title %>
-        <%= f.text_field :title, placeholder: "Title" %>
-      </div>
+    <% end %>
 
-      <div>
-        <%= f.label :comment %>
-        <%= f.text_area :comment, placeholder: "Type your comment here..." %>
-      </div>
+    <div>
+      <%= f.label :title %>
+      <%= f.text_field :title, placeholder: "Title" %>
+    </div>
+
+    <div>
+      <%= f.label :comment %>
+      <%= f.text_area :comment, placeholder: "Type your comment here..." %>
+    </div>
+
+  <% end %>
+  <% if @reviews.empty? %>
+    <p><i>There are currently no reviews for this product</i></p>
+  <% else %>
+    <% @product.reviews.each do |review| %>
+      <h3><%= link_to "#{review.title}", product_review_path(review) %></h3>
+      <p><%= review.comment %></p>
+      <p><%= review.user.email %></p>
+      <hr>
     <% end %>
   <% end %>
 <% else %>
