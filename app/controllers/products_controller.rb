@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :ensure_logged_in, except: [:show]
+  before_action :ensure_logged_in, only: [:create, :destroy, :update ]
 
   def index
     @products = Product.all
@@ -20,6 +20,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.user_id = current_user.id
     if @product.save
       redirect_to product_path(@product), :notice => "Product Created!"
     else

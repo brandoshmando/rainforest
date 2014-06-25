@@ -3,6 +3,7 @@
   <p><%= link_to "//Home", root_path %> | <%= link_to "//View", @product %> | <%= link_to "//Delete", product_path, method: :delete %></p>
 <% else %>
   <p><%= link_to "//Home", root_path %> | <%= link_to "//View", @product %> </p>
+<% end %>
 <hr>
 
 <%= render 'form.html.erb' %>
