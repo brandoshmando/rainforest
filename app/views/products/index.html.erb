@@ -1,4 +1,4 @@
-<h1>Welcome to the Rainforest!</h1>
+<h1>Welcome to the Rainforest!</h1><small><%= page_entries_info @products %></small>
 <h3><%= link_to "//List New Product", new_product_path %></h3>
 <%= form_tag products_path, method: :get, id: 'search-form', authentication: false do %>
 <%= text_field_tag :search, params[:search] %>
@@ -8,10 +8,7 @@
 <div id="products">
   <%= render @products %>
 </div>
-
-<script type="text/javascript">
-
-</script>
+<%= paginate @products %>
 
 
 
