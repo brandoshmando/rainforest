@@ -1,3 +1,3 @@
 Rainforest
 ==========
-Rainforest was an assignment I was required to do while at Bitmaker Labs. It is a replica Amazon app (minus the eCommerce part...). The app itself has no styling but was a great practice for backend and database relation design. It consists incorporates concepts like a user model that allows a user to create an account and log in, preventing actions if a user is not signed in, nested routes, and database relationships amongst many others.
+Rainforest was an assignment I was required to do while at Bitmaker Labs. It is a replica Amazon app (minus the eCommerce part...). The app itself has no styling but was a great practice for backend and database relation design. It incorporates concepts like a user model that allows a user to create an account and log in, preventing actions if a user is not signed in, nested routes, and database relationships amongst many others.
