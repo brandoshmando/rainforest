@@ -15,18 +15,12 @@
 </p>
 <hr>
 <h2>Reviews for <%= @product.name %></h2>
-<hr>
 <% if current_user %>
- <%= render 'comment_form.html.erb' %>
+ <%= render 'comment_form' %>
   <% if @reviews.empty? %>
     <p><i>There are currently no reviews for this product</i></p>
   <% else %>
-    <% @product.reviews.each do |review| %>
-      <h3><%= link_to "#{review.title}", product_review_path(review) %></h3>
-      <p><%= review.comment %></p>
-      <p><%= review.user.email %></p>
-      <hr>
-    <% end %>
+  <%= render 'reviews' %>
   <% end %>
 <% else %>
   <p>Please  <%= link_to "Sign in", new_session_path %> or <%= link_to "Sign up", new_user_path %> to see these reviews!</p>

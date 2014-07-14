@@ -10,10 +10,10 @@
   <p>This user has not reviewed any products yet...</p>
   <hr>
 <% else %>
-  <% user.reviews.each do |review| %>
+  <% @user.reviews.each do |review| %>
     <h3><%= review.title %></h3>
     <p><strong>Review:</strong><%= review.comment %></p>
-    <p><%= link to "#{review.created_at}", product_review_path %></p>
+    <p><%= "#{review.created_at}" %></p>
   <hr>
   <% end %>
 <% end %>

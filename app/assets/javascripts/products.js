@@ -7,6 +7,14 @@ $(document).on('ready page: load', function(){
         return $.getScript(url);
       };
     });
+
+    function(){
+      $('#new-product').on('ajax:beforeSend', function(){
+        $("input[type='submit']").val('Saving...').attr('disable', 'disable')
+      }).on('ajax:complete' function(){
+        $("input[type='submit']").val('Create Review').removeAttr('disabled')
+      });
+    };
   }
   // $('#search-form').submit(function(ev){
   //   ev.preventDefault();

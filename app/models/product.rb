@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
   has_many :reviews
-  belongs_to :users
+  belongs_to :user
   validates :name, presence: true, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 200 }
   validates :price_in_cents, numericality: {:only_integer => true}

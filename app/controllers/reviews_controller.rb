@@ -7,14 +7,16 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Product.reviews.build(review_params)
+    @review = @product.reviews.build(review_params)
     @review.user_id = current_user.id
-
-    if @review.save
-      redirect_to @product, notice: "Review successfully created!"
-    else
-      render :product
-      flash.now[:alert] = "Review was not created..."
+    respond_to do |format|
+      if @review.save
+        format.html {redirect_to @product, notice: "Review successfully created!"}
+        format.js {}
+      else
+        format.html {render :product, alert: "Review was not created..."}
+        format.js {}
+      end
     end
   end
 
